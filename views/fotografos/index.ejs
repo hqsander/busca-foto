@@ -1,0 +1,31 @@
+<% include ../partials/header %> 
+
+ <div class="container">
+     <header class="jumbotron">
+         <div class="container">
+             <h1>BuscaFoto</h1>
+             <p>Nossos fotógrafos passam por um rígido processo de curadoria.</p>
+             <p>
+                <a class="btn btn-primary btn-large" href="/fotografos/new">Indique um fotógrafo</a>
+             </p>
+         </div>
+     </header>
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% fotografos.forEach(function(fotografo){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= fotografo.imagem %>">
+                   <div class="caption">
+                       <h4><%= fotografo.nome %></h4>
+                   </div>
+                   <p>
+                       <a href="/fotografos/<%= fotografo._id %>" class="btn btn-primary">Conheça</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RESTful Routes</title>
+<!-- 	<link rel="stylesheet" type="text/css" href="bootstrap.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<div class="jumbotron">
+				<h1>RESTful Routes</h1>
+				<p>Tabela das 7 rotas do padrão RESTful</p>
+			</div>
+			<table class="table table-hover table-bordered">
+			<thead>	
+				<tr>
+					<th>Nome</th>
+					<th>Caminho</th>
+					<th>Verbo HTTP</th>
+					<th>Serve para</th>
+					<th>Método no Mongoose</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Index</td>
+					<td>/trem</td>
+					<td>GET</td>
+					<td>Lista todos os trens</td>
+					<td>Trem.find()</td>
+				</tr>
+				<tr class="success">
+					<td>New</td>
+					<td>/trem/new</td>
+					<td>GET</td>
+					<td>Exibe o form para um novo trem</td>
+					<td>N/A</td>
+				</tr>
+				<tr class="success">
+					<td>Create</td>
+					<td>/trem</td>
+					<td>POST</td>
+					<td>Cria um trem, e depois redireciona para algum lugar</td>
+					<td>Trem.create()</td>
+				</tr>
+				<tr class="info">
+					<td>Show</td>
+					<td>/trem/:id</td>
+					<td>GET</td>
+					<td>Exibe informações de um trem específico (id)</td>
+					<td>Trem.findById()</td>
+				</tr>
+				<tr class="warning">
+					<td>Edit</td>
+					<td>/trem/:id/edit</td>
+					<td>GET</td>
+					<td>Exibe o form para editar um trem preexistente</td>
+					<td>Trem.findById()</td>
+				</tr>
+				<tr class="warning">
+					<td>Update</td>
+					<td>/trem/:id</td>
+					<td>PUT</td>
+					<td>Atualiza/updata um trem, e depois redireciona para algum lugar</td>
+					<td>Trem.findByIdAndUpdate()</td>
+				</tr>
+				<tr class="danger">
+					<td>Destroy</td>
+					<td>/trem/:id</td>
+					<td>DELETE</td>
+					<td>Deleta um trem, e depois redireciona para algum lugar</td>
+					<td>Trem.findByIdAndRemove()</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+	</div>	
+</body>
+</html>
