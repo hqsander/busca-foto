@@ -8,7 +8,7 @@ var middleware = require("../middleware");
 
 // NEW RESTful
 router.get("/new", middleware.isLoggedIn, function (req, res) {
-    console.log(req.params.id);
+    //console.log(req.params.id);
     // busca o fotógrafo pelo id
     Fotografo.findById(req.params.id, function (err, fotografo) {
         if (err) {
@@ -39,7 +39,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
                     comentario.save();
                     fotografo.comentarios.push(comentario);
                     fotografo.save();
-                    console.log(comentario);
+                    //console.log(comentario);
                     req.flash("success", "Comentário adicionado.");
                     res.redirect("/fotografos/" + fotografo._id);
                 }
