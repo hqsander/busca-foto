@@ -1,10 +1,21 @@
-npm install body-parser connect-flash ejs express express-session method-override mongoose passport passport-local passport-local-mongoose --save
+# Curiosidade
+O "git clone" cria uma pasta antes de baixar os arquivos. Não tem o risco de ocorrer como num "extrair aqui" e os arquivos ficarem espalhados no disco.
 
+# Para rodar o projeto é necessário ter o Node.js e Mongo instalados na máquina. O Mongo precisa estar escutando (mongod).
+
+# Executar "npm instal" assim, sem especificar, para baixar tudo que está listado no package.json
+
+# Configurar o app.listen de acordo com a máquina específica.
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("O BuscaFoto está rodando...");
 });
+app.listen(3000, function () {
+    console.log("O BuscaFoto está rodando...");
+});
 
-eslint --init
+# Rodar aplicação: "node app.js".
+
+# Se o ambiente for um vscode e não possuir um linter nativo, rodar "eslint --init". O arquivo eslintrc deve ter o seguinte conteúdo. (considerando as minhas preferências pessoais)
 
 module.exports = {
     "env": {
