@@ -33,7 +33,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
             console.log(err);
         } else {
             //após criar o fotógrafo, redirecionar para listagem
-            console.log(recemCriado);
+            //console.log(recemCriado);
             res.redirect("/fotografos");
         }
     });
@@ -46,17 +46,19 @@ router.get("/new", middleware.isLoggedIn, function (req, res) {
 
 // SHOW RESTful
 router.get("/:id", function (req, res) {
-    console.log(req.params);
+    //console.log(req.params.id);
     //procura fotografo pelo id
-    Fotografo.findById(req.params.id).populate("comentarios").exec(function (err, fotografoEncontrado) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(fotografoEncontrado);
-            //exibe o fotógrafo
-            res.render("fotografos/show", { fotografo: fotografoEncontrado });
-        }
-    });
+    if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+        Fotografo.findById(req.params.id).populate("comentarios").exec(function (err, fotografoEncontrado) {
+            if (err) {
+                console.log(err);
+            } else {
+                //console.log(fotografoEncontrado);
+                //exibe o fotógrafo
+                res.render("fotografos/show", { fotografo: fotografoEncontrado });
+            }
+        });
+    }
 });
 
 // EDIT RESTful
