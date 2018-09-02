@@ -65,7 +65,8 @@ router.put("/:comentario_id", middleware.verificaAutoriaComentario, function (re
         if (err) {
             res.redirect("back");
         } else {
-            res.redirect("/fotografos/" + comentarioAtualizado.id);
+            console.log(comentarioAtualizado);
+            res.redirect("/fotografos/" + req.params.id);
         }
     });
 });
