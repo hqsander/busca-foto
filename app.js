@@ -17,9 +17,9 @@ var comentarioRoutes  = require("./routes/comentarios"),
     indexRoutes       = require("./routes/index");
 
 var urlBanco = process.env.DATABASEURL || "mongodb://localhost/buscafoto";
+mongoose.connect(urlBanco);
 var porta = process.env.PORT || 3000;
 var ip = process.env.IP;
-mongoose.connect(urlBanco);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
