@@ -1,10 +1,22 @@
 <% include ./partials/header %> 
 
-<h1>Entrar</h1>
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="usuário">
-    <input type="password" name="password" placeholder="senha">
-    <input type="submit" value="Entrar">
-</form>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Entrar</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/login" method="POST">    
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="usuário">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="senha">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <% include ./partials/footer %> 

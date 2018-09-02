@@ -1,10 +1,22 @@
 <% include ./partials/header %> 
 
-<h1>Inscreva-se</h1>
-<form action="/cadastro" method="post">
-    <input type="text" name="username" placeholder="usuário">
-    <input type="password" name="password" placeholder="senha">
-    <button>Inscreva-se</button>
-</form>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Inscreva-se</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/cadastro" method="post"> 
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="usuário">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="senha">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Inscreva-se</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <% include ./partials/footer %> 
