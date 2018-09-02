@@ -15,8 +15,12 @@ var express        = require("express"),
 var comentarioRoutes  = require("./routes/comentarios"),
     fotografoRoutes   = require("./routes/fotografos"),
     indexRoutes       = require("./routes/index");
-    
-mongoose.connect("mongodb://localhost/buscafoto");
+
+var urlBanco = process.env.DATABASEURL || "mongodb://localhost/buscafoto";
+var porta = process.env.PORT || 3000;
+var ip = process.env.IP;
+mongoose.connect(urlBanco);
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -48,7 +52,13 @@ app.use("/", indexRoutes);
 app.use("/fotografos", fotografoRoutes);
 app.use("/fotografos/:id/comentarios", comentarioRoutes);
 
-
-app.listen(3000, function () {
-    console.log("O BuscaFoto está rodando...");
-});
+//Verifica se process.env.PORT é undefined. Comparar com void(qualquerCoisa) é um check seguro.
+if (process.env.PORT === void (0)) {
+    app.listen(porta, function () {
+        console.log("O BuscaFoto está rodando...");
+    });
+} else {
+    app.listen(process.env.PORT, process.env.IP, function () {
+        console.log("O BuscaFoto está rodando...");
+    });
+}

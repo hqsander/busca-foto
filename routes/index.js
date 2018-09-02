@@ -21,7 +21,7 @@ router.post("/cadastro", function (req, res) {
             return res.render("cadastro");
         }
         passport.authenticate("local")(req, res, function () {
-            req.flash("success", "Bem-vindo ao BuscaFoto, " + usuario.username + ".");
+            req.flash("success", "Seja bem-vindo, " + usuario.username + ".");
             res.redirect("/fotografos");
         });
     });

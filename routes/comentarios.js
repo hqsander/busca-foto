@@ -8,7 +8,6 @@ var middleware = require("../middleware");
 
 // NEW RESTful
 router.get("/new", middleware.isLoggedIn, function (req, res) {
-    //console.log(req.params.id);
     // busca o fotógrafo pelo id
     Fotografo.findById(req.params.id, function (err, fotografo) {
         if (err) {
@@ -39,7 +38,6 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
                     comentario.save();
                     fotografo.comentarios.push(comentario);
                     fotografo.save();
-                    //console.log(comentario);
                     req.flash("success", "Comentário adicionado.");
                     res.redirect("/fotografos/" + fotografo._id);
                 }
@@ -65,7 +63,6 @@ router.put("/:comentario_id", middleware.verificaAutoriaComentario, function (re
         if (err) {
             res.redirect("back");
         } else {
-            console.log(comentarioAtualizado);
             res.redirect("/fotografos/" + req.params.id);
         }
     });

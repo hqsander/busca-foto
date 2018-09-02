@@ -1,0 +1,20 @@
+# Certificar de que a aplicação roda lindamente.
+
+# -terminal-
+Na root do projeto, sendo ele um git repo (master, preferencialmente), execute: heroku create
+
+# -package.json-
+Certificar que existe um | "start": "node app.js" | dentro de scripts; pois é o que roda a aplicação no deploy.
+
+# -terminal-
+Após conferido o package, estando tudo ok, execute: git push heroku master
+	+ O comando acima envia a aplicação para o heroku, executa um npm instal e por fim roda o start script. No fim do deploy, te entrega uma url para acessar a aplicação.
+
+# -terminal-
+É opcional executar: heroku logs
+	+ Também é possível mandar rodar comandos de terminal lá no heroku. Executar: heroku run ls
+
+# -código-
+Configurar a url do banco. (exemplo: mongodb://<dbuser>:<dbpassword>@ds141972.mlab.com:41972/buscafoto)
+	+ Utilizar mlab.com gratuito.
+bancoLix0ebuscafoto

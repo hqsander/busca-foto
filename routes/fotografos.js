@@ -26,6 +26,10 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
         id: req.user._id,
         username: req.user.username
     };
+    //se imagem não der match com a regex, então que seja painful harold.
+    if(!imagem.match(/^(http|https).*(jpg)$/)){
+        imagem = "https://i.kym-cdn.com/entries/icons/original/000/016/546/hidethepainharold.jpg";
+    }
     var novoFotografo = { nome: nome, imagem: imagem, bio: bio, autor: autor };
     //Cria o fotógrafo e manda para o banco
     Fotografo.create(novoFotografo, function (err, recemCriado) {
@@ -33,7 +37,6 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
             console.log(err);
         } else {
             //após criar o fotógrafo, redirecionar para listagem
-            //console.log(recemCriado);
             res.redirect("/fotografos");
         }
     });
@@ -46,14 +49,12 @@ router.get("/new", middleware.isLoggedIn, function (req, res) {
 
 // SHOW RESTful
 router.get("/:id", function (req, res) {
-    //console.log(req.params.id);
     //procura fotografo pelo id
     if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
         Fotografo.findById(req.params.id).populate("comentarios").exec(function (err, fotografoEncontrado) {
             if (err) {
                 console.log(err);
             } else {
-                //console.log(fotografoEncontrado);
                 //exibe o fotógrafo
                 res.render("fotografos/show", { fotografo: fotografoEncontrado });
             }
@@ -71,6 +72,10 @@ router.get("/:id/edit", middleware.verificaAutoriaFotografo, function (req, res)
 // UPDATE RESTful
 router.put("/:id", middleware.verificaAutoriaFotografo, function (req, res) {
     // procura e atualiza o fotógrafo
+    //se imagem não der match com a regex, então que seja painful harold.
+    if(!req.body.fotografo.imagem.match(/^(http|https).*(jpg)$/)){
+        req.body.fotografo.imagem = "https://i.kym-cdn.com/entries/icons/original/000/016/546/hidethepainharold.jpg";
+    }
     Fotografo.findByIdAndUpdate(req.params.id, req.body.fotografo, function (err, fotografoAtualizado) {
         if (err) {
             res.redirect("/fotografos");
