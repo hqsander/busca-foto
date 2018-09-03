@@ -27,7 +27,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-//seedDB(); //seed do banco .. agora é purge
+seedDB(); //seed do banco .. agora é purge
 
 // Configurações do PASSPORT
 app.use(require("express-session")({

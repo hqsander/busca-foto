@@ -1,0 +1,34 @@
+Se eu me conheço bem, um dia vou abrir esse repositório e não vou mais lembrar de nada que consta aqui.
+Se esse dia já chegou, segue uma ajuda do passado.
+
+## RECAP ##
+
+# Coloque a aplicação para rodar.
+- É necessário ter instalado o Node.js e MongoDB. (desejável também ter o Visual Studio Code)
+- No terminal, execute |node app.js|.
+- O framework "express" fica responsável por ouvir uma porta definida e passa a responder por requisições.
+
+# Acesse a seguinte url.
+- http://localhost:3000/fotografos 
+- Essa url se traduz como "GET rota /fotografos" "recupere todos os fotógrafos, já que não especifiquei id".
+- Dentro do diretório routes/fotografos.js você encontra a linha router.get("/", function (req, res){ }
+- Por estar dentro do arquivo de rotas dos fotografos, "/" deixa implicito que equivale "...fotografos/".
+- Ao acertar, dar hit nessa rota, a aplicação executa uma function que recupera todos os fotógrafos |Fotografo.find{}| e os inclui na variável "todosFotografos" que segue embutido na response "res" que por sua vez desenha uma tela "views/fotografos/index"
+- Nesse momento a página é desenhada e itera sobre os fotógrafos que ela recebeu como parâmetro utilizando EJS.
+- EJS é o que possibilita incluir código javascript dentro do html <% //javascript segue aqui forEach e tal %>
+
+# RESTful Routes.
+- O exemplo acima representa um "Index GET". A aplicação contempla as 7 rotas do padrão RESTful, o exemplo é apenas uma delas.
+- Outros exemplos: Novo formulário de fotógrafo (GET:fotografo/new), Inclusão de fotógrafo (POST:fotografo/), Exclusão de fotógrafo (DELETE:fotografo/:idFotografo)
+- Sempre que rola um hit em rota (padrão de url) a aplicação executa o código previsto daquela rota e gera uma response "res" que quase sempre gera um render, que corresponde a desenhar e abrir uma página que se encontra em views.
+
+
+
+
+
+
+
+
+
+Usar perfil da Paula no Upwork para contratar, e em seguida utilizar informações da contratação para precificar meu próprio 
+trabalho.
