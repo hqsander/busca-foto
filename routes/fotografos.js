@@ -26,12 +26,22 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
         id: req.user._id,
         username: req.user.username
     };
+    
+    //se o nome estiver vazio, preencher com traço
+    if(nome === null || nome === '') {
+        nome = "---";
+    }
     //se imagem não der match com a regex, então que seja painful harold.
     if(!imagem.match(/^(http|https).*(jpg)$/)){
         imagem = "https://i.kym-cdn.com/entries/icons/original/000/016/546/hidethepainharold.jpg";
     }
+    //se a bio estiver vazia, preencher com traço
+    if(bio === null || bio === '') {
+        bio = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+    }
+
+    //cria o fotógrafo e manda para o banco
     var novoFotografo = { nome: nome, imagem: imagem, bio: bio, autor: autor };
-    //Cria o fotógrafo e manda para o banco
     Fotografo.create(novoFotografo, function (err, recemCriado) {
         if (err) {
             console.log(err);
