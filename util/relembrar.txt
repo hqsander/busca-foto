@@ -8,12 +8,12 @@ Se esse dia já chegou, segue uma ajuda do passado.
 - No terminal, execute |node app.js|.
 - O framework "express" fica responsável por ouvir uma porta definida e passa a responder por requisições.
 
-# Acesse a seguinte url.
+# Requisite a seguinte url.
 - http://localhost:3000/fotografos 
 - Essa url se traduz como "GET rota /fotografos" "recupere todos os fotógrafos, já que não especifiquei id".
 - Dentro do diretório routes/fotografos.js você encontra a linha router.get("/", function (req, res){ }
 - Por estar dentro do arquivo de rotas dos fotografos, "/" deixa implicito que equivale "...fotografos/".
-- Ao acertar, dar hit nessa rota, a aplicação executa uma function que recupera todos os fotógrafos |Fotografo.find{}| e os inclui na variável "todosFotografos" que segue embutido na response "res" que por sua vez desenha uma tela "views/fotografos/index"
+- Ao acertar, dar hit nessa rota, a aplicação executa uma function que recupera todos os fotógrafos |Fotografo.find{}| e os inclui na variável "todosFotografos" que segue embutida na response "res" que por sua vez desenha uma tela "views/fotografos/index"
 - Nesse momento a página é desenhada e itera sobre os fotógrafos que ela recebeu como parâmetro utilizando EJS.
 - EJS é o que possibilita incluir código javascript dentro do html <% //javascript segue aqui forEach e tal %>
 
@@ -22,13 +22,24 @@ Se esse dia já chegou, segue uma ajuda do passado.
 - Outros exemplos: Novo formulário de fotógrafo (GET:fotografo/new), Inclusão de fotógrafo (POST:fotografo/), Exclusão de fotógrafo (DELETE:fotografo/:idFotografo)
 - Sempre que rola um hit em rota (padrão de url) a aplicação executa o código previsto daquela rota e gera uma response "res" que quase sempre gera um render, que corresponde a desenhar e abrir uma página que se encontra em views.
 
+# TL/DR
+- Usuário acessa url.
+- express() escuta e identifica qual rota possui o mesmo formato de url requisitado.
+- a rota identificada em "routes/entidadeQualquer.js" se comporta como controle, o backend, e executa processamento/validações "function (req, res){ }".
+- em seguida gera uma response. Que pode ser res.render("views/paginaQualquer.ejs").
+- ejs é js embarcado, e representa a view. Pode iterar coleções enquanto desenha o html, por exemplo.
 
+# Plugins / require()
+- No meio desse comportamento existem alguns plugins.
+- Vale enfatizar express-session e passport, que possibilitam a autenticação de usuários.
+- Vale conferir também o middleware, que se comporta como uma camada de regras de negócio, enforcement.
 
+# Banco e hospedagem
+- O banco de dados se encontra em https://mlab.com/ 
+- A única coisa que o mlab precisa te entregar para funcionar é a url de conexão. E você precisa ter criado um usuário e senha nesse banco. Exemplo: mongodb://usuarioVemAqui:senhaVemAqui@ds141972.mlab.com:41972/meu-banco-qualquer
+- A hospedagem, quem fornece é o heroku.com
+- Dentro do arquivo heroku.txt segue um guia de deploy.
+- Basicamente, no terminal, você executa heroku create, git push heroku master e pronto, já está lá. Restando apenas configurar a variável de ambiente que guarda a url de conexão do banco (e qualquer outra que não seja hardcoded)
 
-
-
-
-
-
-Usar perfil da Paula no Upwork para contratar, e em seguida utilizar informações da contratação para precificar meu próprio 
-trabalho.
+# Intenções futuras
+- Usar perfil da Paula no Upwork para contratar serviços que sou capaz de fazer, e em seguida utilizar informações da contratação para precificar meu próprio trabalho.
